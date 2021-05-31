@@ -1,0 +1,91 @@
+.login--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #222222;
+  height: 100vh;
+}
+
+.login--card {
+  width: 40%;
+  height: 80%;
+  padding: 2rem;
+  background-color: #151515;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  color:#ffffff;
+}
+
+.cardHeader {
+  display: flex;
+  margin-bottom: 3rem;
+  padding: 1rem;
+}
+
+.cardHeaderText {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 2rem;
+}
+.inputs {
+    height:10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.email {
+  display: flex;
+  color: #fff;
+}
+.email input {
+  width: 50%;
+}
+
+.loginBtn {
+  align-items: stretch;
+  background-color: #17311c;
+  border: 1px solid #fff;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  color: #ffffff;
+  cursor: pointer;
+  width: 100%;
+  margin:2rem auto;
+}
+
+.loginLinks {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.elink {
+  color: #dc2626;
+  margin: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+@media (min-width: 0) and (max-width: 700px) {
+  .login--card {
+    margin: 0;
+    width: 80%;
+  }
+  .loginLinks{
+      flex-direction: column;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1042px) {
+    .login--card {
+      margin: 0;
+      width: 60%;
+    }
+  }

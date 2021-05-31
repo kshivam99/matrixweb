@@ -1,0 +1,100 @@
+.profile--pic {
+  border-radius: 50%;
+  cursor: pointer;
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.signUpContainer {
+  height: 100vh;
+  background-color: #222222;
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+.card {
+  background-color: #151515;
+  padding-top: 2rem;
+  width: 40%;
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: 2rem;
+  color: #fff;
+}
+
+.inputs {
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 2rem 0;
+}
+
+.card input {
+  display: block;
+  width: 80%;
+  height: 2rem;
+  margin: 2rem 0;
+  padding-left: 2rem;
+}
+
+.card p{
+    margin:0 auto;
+}
+
+.signuplogo {
+  display: flex;
+  justify-content: center;
+}
+
+.signupHeader {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.terms {
+  color: #ffffff;
+  cursor: pointer;
+  width: 9rem;
+}
+
+.signupBtn {
+    align-items: stretch;
+    background-color: #17311c;
+    border: 1px solid #fff;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    color: #ffffff;
+    cursor: pointer;
+    width: 100%;
+    margin:2rem auto;
+}
+@media (min-width: 0) and (max-width: 700px) {
+  .signUpContainer {
+    background-color: #222222;
+    min-height: 100vh;
+    padding-top: 3rem;
+  }
+  .card {
+    background-color: #222222;
+    margin: 0;
+    width: 80%;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1042px) {
+    .card {
+      margin: 0;
+      width: 60%;
+      margin:2rem auto;
+    }
+  }
+
