@@ -50,11 +50,14 @@ function Signup() {
   }
 
   async function handleSignup() {
-    if (user.profilePicUrl) {
-      let tempProfilePicUrl = uploadPic(user.profilePicUrl);
+
+    let tempProfilePicUrl="https://res.cloudinary.com/doud1byqv/image/upload/v1622794680/112-1128092_programming-vector-programmer-icon-software-developer-icon-png_qyxh45.jpg";
+
+    if (profilePicUrl) {
+      tempProfilePicUrl = await uploadPic(profilePicUrl);
       setUser((prev) => ({ ...prev, profilePicUrl: tempProfilePicUrl }));
     }
-    registerUser(user, setError, setLoading);
+    registerUser(user, tempProfilePicUrl, setError, setLoading);
   }
 
   return (
@@ -113,10 +116,9 @@ function Signup() {
           name="media"
           onChange={handleChange}
         />
-        <button onClick={handleSignup} className={styles["signupBtn"]}>
+        <button onClick={handleSignup} className={styles["signupBtn"]} disabled={loading}>
           {loading?<Loader active inline='centered' />:"Sign Up"}
         </button>
-        
         <p
           className={styles["terms"]}
           data-tip={tooltipData}

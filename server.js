@@ -7,15 +7,17 @@ const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
 require("dotenv").config();
 const connectDb = require("./utilsServer/connectDb");
-
 connectDb();
 app.use(express.json());
 const PORT = process.env.PORT || 3000;
 
 nextApp.prepare().then(() => {
 
-    app.use('/auth', require("./api/auth"));
-
+    app.use("/api/auth", require("./api/auth"));
+    app.use("/api/posts", require("./api/posts"));
+    app.use("/api/profile", require("./api/profile"));
+    app.use("/api/notification", require("./api/notification"));
+    
     app.all("*", (req, res) => handle(req, res));
   
     server.listen(PORT, err => {

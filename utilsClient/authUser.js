@@ -5,11 +5,11 @@ import Router from "next/router";
 import cookie from "js-cookie";
 
 
-export const registerUser = async (user, setError, setLoading) => {
+export const registerUser = async (user, tempProfilePicUrl, setError, setLoading) => {
 
   try {
     setLoading(true);
-    const res = await axios.post(`${baseUrl}/auth/register`, user);
+    const res = await axios.post(`${baseUrl}/api/auth/register`, {...user, profilePicUrl: tempProfilePicUrl});
     setToken(res.data);
   } catch (error) {
     const errorMsg = catchErrors(error);
@@ -21,7 +21,7 @@ export const registerUser = async (user, setError, setLoading) => {
 export const loginUser = async (user, setError, setLoading) => {
   setLoading(true);
   try {
-    const res = await axios.post(`${baseUrl}/auth/login`, user);
+    const res = await axios.post(`${baseUrl}/api/auth/login`, user);
     setToken(res.data);
     console.log(res);
   } catch (error) {

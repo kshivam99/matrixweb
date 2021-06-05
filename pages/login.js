@@ -49,7 +49,7 @@ function Login() {
           />
         </div>
         {error}
-        <button onClick={handleSignin} className={styles["loginBtn"]}>
+        <button onClick={handleSignin} className={styles["loginBtn"]} disabled={loading}>
           {loading ? <Loader active inline="centered" /> : "Sign In"}
         </button>
         <div className={styles["loginLinks"]}>

@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const { registerValidation, loginValidation } = require("../middlewares/validation");
 const bcrypt = require("bcryptjs");
 const verify = require("../middlewares/verifyToken");
+const Notification = require("../models/Notification");
 
 //get user data on initial load
 
@@ -41,9 +42,13 @@ router.post("/register", async (req, res) => {
     name: req.body.name,
     username: req.body.username,
     password: hashedPassword,
+    profilePicUrl: req.body.profilePicUrl
   });
+  
   try {
     const savedUser = await user.save();
+    await new FollowStats({ user: savedUser._id, followers: [], following: [] }).save();
+    await new Notification({ user: savedUser._id, notifications: [] }).save();
     const token = jwt.sign({ _id: savedUser._id }, process.env.TOKEN_SECRET, { expiresIn: "3d" });
     res.status(200).json(token);
   } catch (err) {
