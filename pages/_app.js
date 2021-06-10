@@ -6,11 +6,15 @@ import baseUrl from "../utilsClient/baseUrl";
 import { redirectUser } from "../utilsClient/authUser";
 import axios from "axios";
 import Layout from "../components/Layout/Layout";
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 
 function MyApp({ Component, pageProps }) {
   return(
     <Layout {...pageProps}>
+       <Provider store={store}>
         <Component {...pageProps} />
+        </Provider>
    </Layout>
   )
 }
@@ -28,7 +32,8 @@ MyApp.getInitialProps = async (appContext) => {
     ctx.pathname === "/notifications" ||
     ctx.pathname === "/posts/[id]" ||
     ctx.pathname === "/messages" ||
-    ctx.pathname === "/search";
+    ctx.pathname === "/search" ||
+    ctx.pathname === "/404";
 
   if (!token) {
     destroyCookie(ctx, "token");

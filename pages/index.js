@@ -1,13 +1,27 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import axios from "axios"
+import axios from "axios";
+import baseUrl from "../utilsClient/baseUrl";
+import { parseCookies } from "nookies";
+import Feed from "../components/Feed/Feed";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchPosts } from "../redux/slices/postsSlice";
+
 
 export default function Home(props) {
-  console.log(props);
+  const {user} = props;
   return (
-    <div className={styles.container}>
-        Index
-    </div>
-  )
+    <Feed  user={user}/>
+    );
 }
+
+// export async function getServerSideProps(ctx) {
+//   const dispatch = useDispatch();
+//   dispatch(fetchPosts(1));
+//   // const { token } = parseCookies(ctx);
+//   // const res = await axios.get(`${baseUrl}/api/posts`, {
+//   //   headers: { Authorization: token },
+//   //   params: { pageNumber: 1 },
+//   // });
+//   return {
+//     props: {...props }
+//   };
+// }

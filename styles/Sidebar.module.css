@@ -1,0 +1,131 @@
+.sidebar {
+    flex: 0.2;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-height: 100vh;
+    padding-top: 2rem;
+    padding-left: 3rem;
+    padding-top: 4rem;
+    padding-right: 2rem;
+    width: 20vw;
+  }
+  
+   .matrixIcon {
+    margin: 0 1.5rem;
+  }
+  
+  /* .sidebar-tweet {
+    background-color: #151515 !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 900 !important;
+    border-radius: 30px !important;
+    text-transform: inherit !important;
+    height: 50px !important;
+    margin-top: 20px !important;
+  } */
+  .echoButton {
+    background-color: #151515;
+    color:#fff;
+    border-radius: 2rem;
+    padding: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: auto;
+  }
+
+  .profileCard {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2rem;
+    padding: 1rem;
+  }
+  .profileCard:hover {
+    transition: color 100ms ease-out;
+    background-color: #151515;
+  }
+  
+  /* .profileCardImage > .MuiAvatar-root {
+    width: 40px;
+    height: 40px;
+  }
+   */
+  /* .profileCardNameCol {
+    display: flex;
+    flex-direction: column;
+    margin-right: 47px;
+  }
+  
+  .profileCardNameColName {
+    color: #d9d9d9;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 19.6875px;
+  }
+  .profileCardNameColuserName {
+    color: #6e767d;
+    font-size: 15px;
+    line-height: 19.6875px;
+  }
+  
+  .profileCardIcon {
+    color: white;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+  } */
+
+  @media (min-width: 0) and (max-width: 1250px) {
+    .sidebarItem > span {
+      display: none;
+    }
+    .tweetButton > span {
+      display: none;
+    }
+    .sidebar {
+      padding-left: 5px;
+      padding-right: 5px;
+      flex: 0.1;
+      max-width: 88px;
+    }
+    .tweetButton {
+      padding: 10px;
+      margin-top: 10px;
+      width: min-content;
+    }
+    .tweetButton > span {
+      display: none;
+    }
+    .setTweetIcon {
+      display: block;
+    }
+    .twitter-icon {
+      width: 20px;
+      margin: 0px;
+      padding: 10px;
+    }
+    .profileCard {
+      padding: 0px;
+      width: min-content;
+    }
+    .profileCardImage {
+      margin-left: 0px !important;
+    }
+    .profileCard > .profileCardNameCol,
+    .profileCard > .profileCardIcon {
+      display: none;
+    }
+  }
+  @media (min-width: 0) and (max-width: 450px) {
+    .sidebar {
+      display: none !important;
+    }
+  }
+  
