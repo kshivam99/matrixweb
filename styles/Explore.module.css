@@ -1,0 +1,21 @@
+.container{
+    border:0.1rem solid #fff;
+    width: 50vw;
+    min-height: 100vh;
+    height: fit-content;
+}
+
+.header{
+    position: fixed;
+    top:0;
+    height: 4rem;
+    width: 49.8vw;
+    z-index: 5;
+    background-color: #151515;
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+.body{
+    padding-top: 4rem;
+}

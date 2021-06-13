@@ -32,7 +32,7 @@ MyApp.getInitialProps = async (appContext) => {
     ctx.pathname === "/notifications" ||
     ctx.pathname === "/posts/[id]" ||
     ctx.pathname === "/messages" ||
-    ctx.pathname === "/search" ||
+    ctx.pathname === "/explore" ||
     ctx.pathname === "/404";
 
   if (!token) {

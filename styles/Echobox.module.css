@@ -31,7 +31,8 @@
     padding: 1rem;
     background-color: #222222;
     color:#fff;
-
+    overflow: scroll;
+    resize: none;
   }
   
   .shareInput:focus {

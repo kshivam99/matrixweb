@@ -1,6 +1,5 @@
 import Echobox from "./Echobox";
 import { useState, useEffect } from "react";
-import baseUrl from "../../utilsClient/baseUrl";
 import InfiniteScroll from "react-infinite-scroll-component";
 import styles from "../../styles/Feed.module.css";
 import Post from "./Post";
@@ -21,19 +20,6 @@ function Feed({ user }) {
 
     const fetchDataOnScroll = async () => {
         
-        // try {
-        //   const res = await axios.get(`${baseUrl}/api/posts`, {
-        //     headers: { Authorization: cookie.get("token") },
-        //     params: { pageNumber }
-        //   });
-    
-        //   if (res.data.length === 0) setHasMore(false);
-    
-        //   setPosts(prev => [...prev, ...res.data]);
-        //   setPageNumber(prev => prev + 1);
-        // } catch (error) {
-        //   alert("Error fetching Posts");
-        // }
       };
     
   return (

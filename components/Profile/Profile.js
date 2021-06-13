@@ -1,37 +1,27 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../../styles/Feed.module.css";
-import Post from "../Feed/Post";
+import Post from "./Post";
+import Cover from "./Cover";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchPosts, fetchProfileStats } from "../../redux/slices/profileSlice";
 
-function Profile({ postsData, user }) {
-    const [posts, setPosts] = useState(postsData || []);
+function Profile({ username, user }) {
+  const profileData = useSelector((state) => state.profileReducer);
+  const dispatch = useDispatch();
 
-    // const fetchDataOnScroll = async () => {
-        
-    //     try {
-    //       const res = await axios.get(`${baseUrl}/api/posts`, {
-    //         headers: { Authorization: cookie.get("token") },
-    //         params: { pageNumber }
-    //       });
-    
-    //       if (res.data.length === 0) setHasMore(false);
-    
-    //       setPosts(prev => [...prev, ...res.data]);
-    //       setPageNumber(prev => prev + 1);
-    //     } catch (error) {
-    //       alert("Error fetching Posts");
-    //     }
-    //   };
-    
+  useEffect(()=>{
+    dispatch(fetchPosts(username));
+  },[])
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <span>{user.name}</span>
+        <span>{username}</span>
       </div>
-    
-        {posts.map((post) => (
-          <Post post={post} user={user} setPosts={setPosts} />
-        ))}
+      <Cover username={username}/>
+      {profileData.posts.map((post) => (
+        <Post postId={post._id} user={user} />
+      ))}
     </div>
   );
 }

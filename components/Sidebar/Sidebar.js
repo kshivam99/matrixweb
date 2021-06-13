@@ -13,7 +13,7 @@ function Sidebar({ user }) {
         <SidebarItem
           text="Home"
           name="home"
-          active={location === "/home"}
+          active={location === "/"}
           new={false}
         />
       </Link>
@@ -25,31 +25,24 @@ function Sidebar({ user }) {
           new={false}
         />
       </Link>
-      <Link href="/Notifications" passHref>
+      <Link href="/notifications" passHref>
         <SidebarItem
           text="Notifications"
           name="bell"
-          active={location === "/Notifications"}
+          active={location === "/notifications"}
           new = {user.unreadNotification}
         />
       </Link>
 
-      <Link href="/Messages" passHref>
+      <Link href="/messages" passHref>
         <SidebarItem
           text="Messages"
           name="envelope"
-          active={location === "/Messages"}
+          active={location === "/messages"}
           new={user.unreadMessage}
         />
       </Link>
-      {/* <Link href="/Bookmarks" passHref>
-        <SidebarItem
-          text="Bookmarks"
-          name="bookmark"
-          active={location === "/Bookmarks" && true}
-        />
-      </Link> */}
-      <Link href="/Profile" passHref>
+      <Link href={`/${user.username}`} passHref>
         <SidebarItem
           text="Profile"
           name="user"

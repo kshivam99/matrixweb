@@ -8,8 +8,8 @@ import { deletePost, likePost } from "../../redux/slices/postsSlice";
 
 
 function Post({ postId, user }) {
-  const postsData = useSelector((state) => state.postsReducer);
-  const post = postsData.posts.find(post=>post._id === postId);
+  const profileData = useSelector((state) => state.profileReducer);
+  const post = profileData.posts.find(post=>post._id === postId);
   const likes = post.likes;
 
   const [viewDeleteConfirm, setViewDeleteConfirm] = useState(false);

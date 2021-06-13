@@ -16,9 +16,8 @@ const {
 
 router.get("/:username", verify, async (req, res) => {
   try {
-    const { username } = req.params;
-
-    const user = await User.findOne({ username: username.toLowerCase() });
+    const username = req.params.username;
+    const user = await User.findOne({ username: username });
     if (!user) {
       return res.status(404).send("No User Found");
     }
@@ -29,12 +28,11 @@ router.get("/:username", verify, async (req, res) => {
 
     return res.json({
       profile,
+      followers:
+        profileFollowStats.followers.length > 0 ? profileFollowStats.followers.map(item=>item.user) : [],
 
-      followersLength:
-        profileFollowStats.followers.length > 0 ? profileFollowStats.followers.length : 0,
-
-      followingLength:
-        profileFollowStats.following.length > 0 ? profileFollowStats.following.length : 0
+      following:
+        profileFollowStats.following.length > 0 ? profileFollowStats.following.map(item=>item.user) : []
     });
   } catch (error) {
     console.error(error);
@@ -135,6 +133,8 @@ router.put("/unfollow/:userToUnfollowId", verify, async (req, res) => {
   try {
     const { userId } = req;
     const { userToUnfollowId } = req.params;
+
+    console.log("inisde unfollow route")
 
     const user = await FollowStats.findOne({
       user: userId

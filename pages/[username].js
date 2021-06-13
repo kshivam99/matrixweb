@@ -6,22 +6,22 @@ import baseUrl from "../utilsClient/baseUrl";
 
 
 
-export default function ProfilePage({posts, user}) {
+export default function ProfilePage({user}) {
     const router = useRouter();
     const { username } = router.query;
     return (
-        <Profile postsData={posts} user={user}/>
+        <Profile username={username} user={user}/>
         );
 }
 
-export async function getServerSideProps(ctx) {
-    const { token } = parseCookies(ctx);
+// export async function getServerSideProps(ctx) {
+//     const { token } = parseCookies(ctx);
     
-    const res = await axios.get(`${baseUrl}/api/profile/posts/${ctx.query.username}`, {
-      headers: { Authorization: token }
-    });
-    return {
-      props: { posts: res.data },
-    };
-  }
+//     const res = await axios.get(`${baseUrl}/api/profile/posts/${ctx.query.username}`, {
+//       headers: { Authorization: token }
+//     });
+//     return {
+//       props: { posts: res.data },
+//     };
+//   }
   

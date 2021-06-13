@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "../../styles/Echobox.module.css";
-import { Icon } from "semantic-ui-react";
+import { Icon, Loader } from "semantic-ui-react";
 import uploadPic from "../../utilsClient/uploadPicToCloudinary";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
@@ -105,7 +105,7 @@ function Echobox({ user }) {
             </div>
           </div>
           <button className={styles.shareButton} type="submit">
-            Echo
+            {postsData.status === "loading"?<Loader active inline='centered' size="tiny" />:`Echo`}
           </button>
         </form>
       </div>

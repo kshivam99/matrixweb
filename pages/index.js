@@ -13,15 +13,3 @@ export default function Home(props) {
     );
 }
 
-// export async function getServerSideProps(ctx) {
-//   const dispatch = useDispatch();
-//   dispatch(fetchPosts(1));
-//   // const { token } = parseCookies(ctx);
-//   // const res = await axios.get(`${baseUrl}/api/posts`, {
-//   //   headers: { Authorization: token },
-//   //   params: { pageNumber: 1 },
-//   // });
-//   return {
-//     props: {...props }
-//   };
-// }
