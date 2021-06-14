@@ -1,6 +1,7 @@
 import styles from "../../styles/Sidebar.module.css";
 import SidebarItem from "./SidebarItem";
 import Image from "next/image";
+import { Icon } from "semantic-ui-react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -72,6 +73,7 @@ function Sidebar({ user }) {
             <span>{`@${user.username}`}</span>
           </div>
         </div>
+        <Icon name="log out" size='large'/>
       </div>
     </div>
   );

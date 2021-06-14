@@ -36,7 +36,7 @@ function Cover({ username }) {
             {profileStats.profile && profileStats.profile.user.name}
           </h4>
           <p className={styles.profileInfoStats}>
-            {`${profileStats.followers} Followers ${profileStats.following} Following`}
+            {`${profileStats.followers && profileStats.followers.length} Followers ${profileStats.following && profileStats.following.length} Following`}
           </p>
           <span className={styles.profileInfoDesc}>
             {profileStats.profile && profileStats.profile.bio}

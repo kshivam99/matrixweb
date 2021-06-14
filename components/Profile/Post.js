@@ -30,7 +30,7 @@ function Post({ postId, user }) {
       <div className={styles.postWrapper}>
         <div className={styles.postTop}>
           <div className={styles.postTopLeft}>
-            <Link href={`/profile/${post.user.username}`}>
+            <Link href={`/${post.user.username}`}>
               <img
                 className={styles.postProfileImg}
                 src={post.user.profilePicUrl}
