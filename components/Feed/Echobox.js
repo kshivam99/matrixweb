@@ -22,7 +22,7 @@ function Echobox({ user }) {
     if (media !== null) {
       picUrl = await uploadPic(media);
       if (!picUrl) {
-        return setError("Error Uploading Image");
+        console.log("Error Uploading Image");
       }
     }
     const req = {text, location, picUrl};
