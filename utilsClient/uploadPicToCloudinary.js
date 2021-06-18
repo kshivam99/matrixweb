@@ -10,7 +10,7 @@ const uploadPic = async media => {
     const res = await axios.post(process.env.CLOUDINARY_URL, form);
     return res.data.url;
   } catch (error) {
-    return;
+    console.log(error);
   }
 };
 

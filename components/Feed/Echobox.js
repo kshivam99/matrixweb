@@ -18,7 +18,6 @@ function Echobox({ user }) {
  async function submitHandler(e) {
     e.preventDefault();
     let picUrl=null;
-
     if (media !== null) {
       picUrl = await uploadPic(media);
       if (!picUrl) {
