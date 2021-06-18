@@ -7,7 +7,7 @@ const uploadPic = async media => {
     form.append("upload_preset", "matrix");
     form.append("cloud_name", "doud1byqv");
 
-    console.log(process.env.CLOUDINARY_URL,"url offff cloudinary")
+    console.log(process.env.NEXT_PUBLIC_CLOUDINARY_URL,"url of cloudinary")
     const res = await axios.post(process.env.CLOUDINARY_URL, form);
     return res.data.url;
   } catch (error) {
