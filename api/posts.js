@@ -10,6 +10,7 @@ const {
   newCommentNotification,
   removeCommentNotification
 } = require("../utilsServer/notificationActions");
+const uuid = require("react-uuid");
 
 
 // CREATE A POST
@@ -276,7 +277,7 @@ router.get("/", verify, async (req, res) => {
         );
       }
   
-      return res.status(200).json(newComment._id);
+      return res.status(200).json(newComment);
     } catch (error) {
       console.error(error);
       return res.status(500).send(`Server error`);

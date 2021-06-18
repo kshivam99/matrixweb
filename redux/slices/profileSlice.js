@@ -11,7 +11,6 @@ const Axios = axios.create({
 export const fetchPosts = createAsyncThunk(
   "profile/fetchPosts",
   async (username) => {
-    console.log(cookie.get("token"))
     const res = await Axios.get(`/posts/${username}`);
     return res.data;
   }

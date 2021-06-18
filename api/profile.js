@@ -133,9 +133,7 @@ router.put("/unfollow/:userToUnfollowId", verify, async (req, res) => {
   try {
     const { userId } = req;
     const { userToUnfollowId } = req.params;
-
-    console.log("inisde unfollow route")
-
+    
     const user = await FollowStats.findOne({
       user: userId
     });

@@ -1,0 +1,52 @@
+.modalBg{
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #1313137e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.editModal{
+    min-height : 280px;
+    max-height: max-content;
+    width: 450px;
+    background-color: #262626;
+    border-radius: 5px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.modalText{
+    padding: 1.5rem 1.5rem 0;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    font-size: 1.5rem;
+}
+
+
+.editModal button{
+    float: right;
+    margin: 1.3rem;
+    opacity: .7;
+    border-radius: 4px;
+    padding: .5rem .7rem;
+    border: 1px solid rgb(196, 192, 192);
+    color: white;
+    background: transparent;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.editModal button:hover{
+    opacity: 1;
+}

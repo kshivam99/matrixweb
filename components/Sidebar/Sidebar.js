@@ -1,12 +1,14 @@
 import styles from "../../styles/Sidebar.module.css";
 import SidebarItem from "./SidebarItem";
-import Image from "next/image";
 import { Icon } from "semantic-ui-react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useState } from "react";
+import ConfirmLogout from "./Confirm";
 
 function Sidebar({ user }) {
   const location = useRouter().pathname;
+  const [viewModal, setViewModal] = useState(false);
 
   return (
     <div className={styles.sidebar}>
@@ -51,11 +53,8 @@ function Sidebar({ user }) {
           new={false}
         />
       </Link>
-      <div className={styles.echoButton}>
-        <span>Echo</span>
-      </div>
       <div className={styles.profileCard}>
-        <div className="profileCardImage">
+        <div className={styles.profileCardImage}>
           {user && 
             <img
               src={user.profilePicUrl}
@@ -73,8 +72,9 @@ function Sidebar({ user }) {
             <span>{`@${user.username}`}</span>
           </div>
         </div>
-        <Icon name="log out" size='large'/>
+        <Icon name="log out" size='large' onClick={()=>setViewModal(prev=>!prev)}/>
       </div>
+      {viewModal && <ConfirmLogout setViewModal={setViewModal}/>}
     </div>
   );
 }

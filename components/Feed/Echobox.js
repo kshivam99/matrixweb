@@ -22,7 +22,6 @@ function Echobox({ user }) {
     if (media !== null) {
       picUrl = await uploadPic(media);
       if (!picUrl) {
-        setLoading(false);
         return setError("Error Uploading Image");
       }
     }

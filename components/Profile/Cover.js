@@ -12,8 +12,6 @@ function Cover({ username }) {
     dispatch(fetchProfileStats(username));
   }, []);
 
-  console.log(profileStats);
-
   return (
     <div className={styles.profileRight}>
       <div className={styles.profileRightTop}>

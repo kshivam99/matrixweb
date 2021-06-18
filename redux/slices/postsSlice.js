@@ -47,7 +47,7 @@ export const likePost = createAsyncThunk("posts/likePost", async (req) => {
 
 export const postComment = createAsyncThunk(
   "posts/postComment",
-  async ({postId, user, text}) => {
+  async ({postId, text}) => {
     await Axios.post(`/comment/${postId}`, { text });
     return {postId, text};
   }

@@ -23,11 +23,9 @@ export const loginUser = async (user, setError, setLoading) => {
   try {
     const res = await axios.post(`${baseUrl}/api/auth/login`, user);
     setToken(res.data);
-    console.log(res);
   } catch (error) {
     const errorMsg = catchErrors(error);
     setError(errorMsg);
-    console.log("erroa aaya kya", errorMsg);
   }
   setLoading(false);
 };
@@ -46,8 +44,7 @@ const setToken = token => {
   Router.push("/");
 };
 
-export const logoutUser = email => {
-  cookie.set("userEmail", email);
+export const logoutUser = () => {
   cookie.remove("token");
   Router.push("/login");
   Router.reload();

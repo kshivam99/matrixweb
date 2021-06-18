@@ -21,7 +21,7 @@ function Feed({ user }) {
     const fetchDataOnScroll = async () => {
         
       };
-    
+      
   return (
     <div className={styles.container}>
       <div className={styles.header}>
