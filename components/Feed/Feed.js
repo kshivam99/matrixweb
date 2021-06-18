@@ -19,7 +19,8 @@ function Feed({ user }) {
     },[])
 
     const fetchDataOnScroll = async () => {
-        
+      dispatch(fetchPosts(pageNumber));
+      setPageNumber(prev=>prev+1);
       };
       
   return (
@@ -31,7 +32,6 @@ function Feed({ user }) {
        <InfiniteScroll
         hasMore={hasMore}
         next={fetchDataOnScroll}
-        loader={<p>Loading...</p>}
         endMessage={<p>End of posts</p>}
         dataLength={postsData.posts.length}
       >

@@ -14,7 +14,7 @@ export const fetchPosts = createAsyncThunk(
     const res = await Axios.get("/", {
       params: { pageNumber: number },
     });
-    return res.data;
+    return {posts: res.data, number};
   }
 );
 
@@ -70,16 +70,16 @@ export const postsSlice = createSlice({
   },
   reducers: {},
   extraReducers: {
-    [fetchPosts.pending]: (state, action) => {
-      state.status = "loading";
-    },
     [fetchPosts.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      state.posts = [...action.payload, ...state.posts];
-    },
-    [fetchPosts.rejected]: (state, action) => {
-      state.status = "failed";
-      state.error = action.error.message;
+      if(action.payload.number===1)
+      {
+        state.posts = action.payload.posts;
+      }
+      else
+      {
+        state.posts = [...action.payload.posts, ...state.posts];
+      }
     },
     [submitNewPost.pending]: (state, action) => {
       state.status = "loading";

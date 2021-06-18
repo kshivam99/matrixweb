@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Feed, Segment, Divider, Container } from "semantic-ui-react";
 import axios from "axios";
 import baseUrl from "../utilsClient/baseUrl";
@@ -10,7 +10,7 @@ import FollowerNotification from "../components/Notifications/FollowerNotificati
 import styles from "../styles/Feed.module.css";
 
 
-function Notifications({ notifications, userFollowStats }) {
+function Notifications({ notifications }) {
 
   useEffect(() => {
     const notificationRead = async () => {
