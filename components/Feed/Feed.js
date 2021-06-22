@@ -39,6 +39,7 @@ function Feed({ user }) {
           <Post postId={post._id} user={user} />
         ))}
       </InfiniteScroll>
+      <div style={{height:"4rem"}}></div>
     </div>
   );
 }

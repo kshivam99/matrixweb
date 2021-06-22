@@ -51,4 +51,8 @@
   .sidebarItem span{
     display: none;
   }
+  .sidebarItem{
+    margin: 0;
+    padding: 0;
+  }
 }
