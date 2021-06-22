@@ -70,7 +70,7 @@ function Notifications({ notifications }) {
             </div>
           </Segment>
         ) : (
-          <p>None</p>
+          <div style={{textAlign:"center", marginTop:"3rem"}}>No Notification</div>
         )}
         <Divider hidden />
       </Container>

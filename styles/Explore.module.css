@@ -21,3 +21,20 @@
     padding-left: 1rem;
     padding-right: 1rem;
 }
+
+@media (min-width: 600px) and (max-width: 1000px) {
+    .container{
+        width: calc(100vw - 6rem);
+    }
+    .header{
+        width: calc(100vw - 6rem)
+    }
+}
+@media screen and (max-width: 600px) {
+    .container{
+        width: 100vw;
+    }
+    .header{
+        width: 100vw;
+    }
+}

@@ -72,7 +72,7 @@ function Sidebar({ user }) {
             <span>{`@${user.username}`}</span>
           </div>
         </div>
-        <Icon name="log out" size='large' onClick={()=>setViewModal(prev=>!prev)}/>
+        <Icon name="log out" size='big' onClick={()=>setViewModal(prev=>!prev)}/>
       </div>
       {viewModal && <ConfirmLogout setViewModal={setViewModal}/>}
     </div>

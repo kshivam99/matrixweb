@@ -1,22 +1,20 @@
 .sidebar {
-    flex: 0.2;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     min-height: 100vh;
     max-height: 100vh;
-    padding-top: 2rem;
-    padding-left: 3rem;
-    padding-top: 4rem;
-    padding-right: 2rem;
-    width: 20vw;
+    width: 22vw;
+    padding-left: 1rem;
   }
   
    .matrixIcon {
     margin: 0 1.5rem;
   }
   
-  .echoButton {
+  /* .echoButton {
     background-color: #151515;
     color:#fff;
     border-radius: 2rem;
@@ -27,7 +25,7 @@
     font-size: 1rem;
     font-weight: 700;
     margin-top: auto;
-  }
+  } */
 
   .profileCard {
     display: inline-flex;
@@ -36,6 +34,7 @@
     justify-content: space-between;
     border-radius: 1rem;
     padding: 1rem;
+    width: 80%;
   }
 
   .profileCardImage img{
@@ -46,19 +45,29 @@
     background-color: #151515;
   }
   
-  @media (min-width: 0) and (max-width: 1250px) {
+  @media (min-width: 600px) and (max-width: 1000px) {
     .sidebarItem > span {
       display: none;
     }
     .sidebar {
-      padding-left: 5px;
-      padding-right: 5px;
-      flex: 0.1;
-      max-width: 88px;
+      width: 6rem;
+      padding: 0;
+      overflow-x: hidden;
     }
-    
+    .profileCard{
+      margin-left: 1rem;
+    }
+    .profileCardImage{
+      display: none;
+    }
+    .profileCardNameCol{
+      display: none;
+    }
+    .echoButton{
+      display: none;
+    }
   }
-  @media (min-width: 0) and (max-width: 450px) {
+  @media (min-width: 0) and (max-width: 600px) {
     .sidebar {
       display: none !important;
     }
