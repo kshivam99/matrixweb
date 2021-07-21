@@ -7,12 +7,11 @@ const Axios = axios.create({
   baseURL: `${baseUrl}/api/posts`,
   headers: { Authorization: cookie.get("token") },
 });
-console.log(cookie.get("token"),"posts slice ke andar");
+
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
   async (number) => {
-    console.log(cookie.get("token"), "token");
     const res = await axios.get(`${baseUrl}/api/posts/`, 
     {
       params: { pageNumber: number },
