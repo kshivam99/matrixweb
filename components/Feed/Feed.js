@@ -15,7 +15,9 @@ function Feed({ user }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchPosts(1));
+    setTimeout(()=>{
+      dispatch(fetchPosts(1));
+    },1000)
   }, []);
 
   const fetchDataOnScroll = async () => {
