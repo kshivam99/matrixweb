@@ -11,6 +11,8 @@ import {
   unFollowUser,
 } from "../../redux/slices/profileSlice";
 
+
+
 function Explore({ user }) {
   const [results, setResults] = useState([]);
   const [text, setText] = useState("");
@@ -60,6 +62,13 @@ function Explore({ user }) {
           onChange={handleChange}
         />
         <List divided verticalAlign="middle">
+        {!results.length && <div style={{display:"flex", justifyContent:"center"}}>
+        <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+        <Image src="/friend.svg" alt="No posts available" width={300} height={300}/>
+        <h4>Find your tribe, Connect with them!</h4>
+        </div>
+      </div>
+      }
           {results.map((profile) => (
             <List.Item>
               <List.Content floated="right">

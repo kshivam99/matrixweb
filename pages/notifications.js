@@ -8,10 +8,9 @@ import LikeNotification from "../components/Notifications/LikeNotification";
 import CommentNotification from "../components/Notifications/CommentNotification";
 import FollowerNotification from "../components/Notifications/FollowerNotification";
 import styles from "../styles/Feed.module.css";
-
+import Image from "next/image";
 
 function Notifications({ notifications }) {
-
   useEffect(() => {
     const notificationRead = async () => {
       try {
@@ -32,37 +31,33 @@ function Notifications({ notifications }) {
       <div className={styles.header}>
         <span>Notifications</span>
       </div>
-      <Container style={{ marginTop: "4rem", backgroundColor:"#222222" }}>
+      <Container style={{ marginTop: "4rem", backgroundColor: "#222222" }}>
         {notifications.length > 0 ? (
-          <Segment style={{backgroundColor:"#222222", color:"#fff" }}>
+          <Segment style={{ backgroundColor: "#222222", color: "#fff" }}>
             <div
               style={{
                 maxHeight: "90vh",
                 overflow: "auto",
                 height: "90vh",
                 position: "relative",
-                width: "100%"
+                width: "100%",
               }}
             >
               <Feed size="small">
-                {notifications.map(notification => (
+                {notifications.map((notification) => (
                   <>
-                    {notification.type === "newLike" && notification.post !== null && (
-                      <LikeNotification
-                        notification={notification}
-                      />
-                    )}
+                    {notification.type === "newLike" &&
+                      notification.post !== null && (
+                        <LikeNotification notification={notification} />
+                      )}
 
-                    {notification.type === "newComment" && notification.post !== null && (
-                      <CommentNotification
-                        notification={notification}
-                      />
-                    )}
+                    {notification.type === "newComment" &&
+                      notification.post !== null && (
+                        <CommentNotification notification={notification} />
+                      )}
 
                     {notification.type === "newFollower" && (
-                      <FollowerNotification
-                        notification={notification}
-                      />
+                      <FollowerNotification notification={notification} />
                     )}
                   </>
                 ))}
@@ -70,7 +65,23 @@ function Notifications({ notifications }) {
             </div>
           </Segment>
         ) : (
-          <div style={{textAlign:"center", marginTop:"3rem"}}>No Notification</div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Image
+                src="/notify.svg"
+                alt="No posts available"
+                width={300}
+                height={300}
+              />
+              <h4>No notification found!</h4>
+            </div>
+          </div>
         )}
         <Divider hidden />
       </Container>
@@ -78,12 +89,12 @@ function Notifications({ notifications }) {
   );
 }
 
-Notifications.getInitialProps = async ctx => {
+Notifications.getInitialProps = async (ctx) => {
   try {
     const { token } = parseCookies(ctx);
 
     const res = await axios.get(`${baseUrl}/api/notification`, {
-      headers: { Authorization: token }
+      headers: { Authorization: token },
     });
     return { notifications: res.data };
   } catch (error) {

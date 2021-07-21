@@ -1,36 +1,34 @@
 import React, { useState } from "react";
 import { Comment, Icon } from "semantic-ui-react";
 import calculateTime from "../../utilsClient/calculateTime";
-import { useSelector, useDispatch } from "react-redux";
-import { postComment, deleteComment  } from "../../redux/slices/postsSlice";
+import { useDispatch } from "react-redux";
+import { deleteComment  } from "../../redux/slices/postsSlice";
 
-function PostComments({ comment, user, setComments, postId }) {
+function PostComments({ comment, user, postId }) {
   const [disabled, setDisabled] = useState(false);
+  const dispatch = useDispatch();
 
   return (
-    <div className={styles.container}>
+    <>
       <Comment.Group>
         <Comment>
           <Comment.Avatar src={comment.user.profilePicUrl} />
           <Comment.Content>
-            <Comment.Author as="a" href={`/${comment.user.username}`}>
+            <Comment.Author as="a" href={`/${comment.user.username}`} style={{color:"#fff"}}>
               {comment.user.name}
             </Comment.Author>
-            <Comment.Metadata>{calculateTime(comment.date)}</Comment.Metadata>
+            <Comment.Metadata style={{color:"#fff"}}>{calculateTime(comment.date)}</Comment.Metadata>
 
-            <Comment.Text>{comment.text}</Comment.Text>
+            <Comment.Text style={{color:"#fff"}}>{comment.text}</Comment.Text>
 
             <Comment.Actions>
               <Comment.Action>
-                {(user.role === "root" || comment.user._id === user._id) && (
+                {( comment.user._id === user._id) && (
                   <Icon
-                    disabled={disabled}
                     color="red"
                     name="trash"
-                    onClick={async () => {
-                      setDisabled(true);
-                      await deleteComment(postId, comment._id, setComments);
-                      setDisabled(false);
+                    onClick={() => {
+                      dispatch(deleteComment({postId, commentId: comment._id}));
                     }}
                   />
                 )}
@@ -39,7 +37,7 @@ function PostComments({ comment, user, setComments, postId }) {
           </Comment.Content>
         </Comment>
       </Comment.Group>
-    </div>
+    </>
   );
 }
 

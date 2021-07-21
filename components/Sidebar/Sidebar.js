@@ -37,14 +37,14 @@ function Sidebar({ user }) {
         />
       </Link>
 
-      <Link href="/messages" passHref>
+      {/* <Link href="/messages" passHref>
         <SidebarItem
           text="Messages"
           name="envelope"
           active={location === "/messages"}
           new={user.unreadMessage}
         />
-      </Link>
+      </Link> */}
       <Link href={`/${user.username}`} passHref>
         <SidebarItem
           text="Profile"

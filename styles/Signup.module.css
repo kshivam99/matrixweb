@@ -23,6 +23,9 @@
   margin: 1rem auto;
   border-radius: 2rem;
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .inputs {

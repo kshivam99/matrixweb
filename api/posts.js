@@ -276,8 +276,9 @@ router.get("/", verify, async (req, res) => {
           text
         );
       }
-  
-      return res.status(200).json(newComment);
+      const newPosts = await Post.findById(postId).populate("comments.user");
+      const newCommentt = newPosts.comments.find(comment => comment._id === newComment._id);
+      return res.status(200).json(newCommentt);
     } catch (error) {
       console.error(error);
       return res.status(500).send(`Server error`);

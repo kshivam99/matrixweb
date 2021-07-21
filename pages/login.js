@@ -9,8 +9,8 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [user, setUser] = useState({
-    username: "",
-    password: "",
+    username: "demouser",
+    password: "123456",
   });
   const { username, password } = user;
 

@@ -48,15 +48,15 @@ export const likePost = createAsyncThunk("posts/likePost", async (req) => {
 export const postComment = createAsyncThunk(
   "posts/postComment",
   async ({postId, text}) => {
-    await Axios.post(`/comment/${postId}`, { text });
-    return {postId, text};
+    const res = await Axios.post(`/comment/${postId}`, { text });
+    return {comment: res.data, postId};
   }
 );
 
 export const deleteComment = createAsyncThunk(
   "posts/deleteComment",
   async ({postId, commentId}) => {
-    await Axios.delete(`/${postId}/${commentId}`);
+    const res = await Axios.delete(`/${postId}/${commentId}`);
     return {postId, commentId};
   }
 );
@@ -131,6 +131,28 @@ export const postsSlice = createSlice({
     [likePost.rejected]: (state, action) => {
       state.status = "failed";
       state.error = action.error.message;
+    },
+    [postComment.fulfilled]: (state, action) => {
+      const { postId, comment } = action.payload;
+      state.status = "succeeded";
+      state.posts = state.posts.map((item) =>
+          item._id === postId
+            ? { ...item, comments: item.comments.concat(comment) }
+            : item
+        );
+      
+    },
+    [deleteComment.fulfilled]: (state, action) => {
+      const { postId, commentId } = action.payload;
+      state.status = "succeeded";
+      state.posts = state.posts.map((item) =>
+          item._id === postId
+            ? {
+                ...item,
+                comments: item.comments.filter((curr) => curr._id !== commentId),
+              }
+            : item
+        );
     },
   },
 });

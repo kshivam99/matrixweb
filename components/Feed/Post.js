@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { useState } from "react";
-import { Icon } from "semantic-ui-react";
+import { Icon, Button } from "semantic-ui-react";
 import styles from "../../styles/Post.module.css";
 import calculateTime from "../../utilsClient/calculateTime";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePost, likePost } from "../../redux/slices/postsSlice";
+import CommentInputField from "./CommentInputField";
+import PostComments from "./PostComments";
 
 
 function Post({ postId, user }) {
   const postsData = useSelector((state) => state.postsReducer);
   const post = postsData.posts.find(post=>post._id === postId);
   const likes = post.likes;
-
+  const [showComments, setShowComments] = useState(false);
   const [viewDeleteConfirm, setViewDeleteConfirm] = useState(false);
 
   const dispatch = useDispatch();
@@ -86,11 +88,37 @@ function Post({ postId, user }) {
             </span>
           </div>
           <div className={styles.postBottomRight}>
-            <span className={styles.postCommentText}>
-              {post.comment} comments
+            <span className={styles.postCommentText} onClick={()=>setShowComments(prev=>!prev)}>
+              {post.comments.length} comments
             </span>
           </div>
         </div>
+        { showComments && <div style={{ marginTop:"1rem"}}>
+        {post.comments.length > 0 &&
+              post.comments.map(
+                (comment, i) =>
+                  i < 3 && (
+                    <PostComments
+                      key={comment._id}
+                      comment={comment}
+                      postId={post._id}
+                      user={user}
+                    />
+                  )
+              )}
+
+            {post.comments.length > 3 && (
+              <Button
+                content="View More"
+                color="teal"
+                basic
+                circular
+                onClick={() => setShowModal(true)}
+              />
+            )}
+
+              <CommentInputField postId={post._id}/>
+        </div>}
       </div>
     </div>
   );

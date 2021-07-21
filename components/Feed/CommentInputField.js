@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Form } from "semantic-ui-react";
-import { postComment } from "../../utils/postActions";
+import { postComment } from "../../redux/slices/postsSlice";
+import { useDispatch } from "react-redux";
 
-function CommentInputField({ postId, user, setComments }) {
+function CommentInputField({ postId }) {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch()
 
   return (
     <Form
@@ -12,8 +14,8 @@ function CommentInputField({ postId, user, setComments }) {
       onSubmit={async e => {
         e.preventDefault();
         setLoading(true);
-        await postComment(postId, user, text, setComments, setText);
-
+        dispatch(postComment({postId, text}))
+        setText("");
         setLoading(false);
       }}>
       <Form.Input
@@ -21,7 +23,7 @@ function CommentInputField({ postId, user, setComments }) {
         onChange={e => setText(e.target.value)}
         placeholder="Add Comment"
         action={{
-          color: "blue",
+          color: "#151515",
           icon: "edit",
           loading: loading,
           disabled: text === "" || loading
