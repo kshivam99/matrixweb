@@ -9,7 +9,7 @@ import CommentInputField from "./CommentInputField";
 import PostComments from "./PostComments";
 
 function Post({ postId, user }) {
-  const postsData = useSelector((state) => state.postsReducer);
+  const postsData = useSelector((state) => state.profileReducer);
   const post = postsData.posts.find(post=>post._id === postId);
   const likes = post.likes;
   const [showComments, setShowComments] = useState(false);

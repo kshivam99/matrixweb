@@ -6,7 +6,7 @@ import Post from "./Post";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPosts } from "../../redux/slices/postsSlice";
 import Image from "next/image";
-import { parseCookies, destroyCookie } from "nookies";
+
 
 function Feed({ user }) {
   const postsData = useSelector((state) => state.postsReducer);
@@ -24,8 +24,6 @@ function Feed({ user }) {
     setPageNumber((prev) => prev + 1);
   };
 
-  const { token } = parseCookies(ctx);
-  console.log(token, "token");
   return (
     <div className={styles.container}>
       <div className={styles.header}>

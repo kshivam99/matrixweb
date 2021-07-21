@@ -11,7 +11,10 @@ const Axios = axios.create({
 export const fetchPosts = createAsyncThunk(
   "profile/fetchPosts",
   async (username) => {
-    const res = await Axios.get(`/posts/${username}`);
+    const res = await axios.get(`${baseUrl}/api/profile/posts/${username}`,
+    {
+      headers: { Authorization: cookie.get("token") }
+    });
     return res.data;
   }
 );
@@ -19,7 +22,9 @@ export const fetchPosts = createAsyncThunk(
 export const fetchProfileStats = createAsyncThunk(
   "profile/fetchProfileStats",
   async (username) => {
-    const res = await Axios.get(`/${username}`);
+    const res = await axios.get(`${baseUrl}/api/profile/${username}`,{
+      headers: { Authorization: cookie.get("token") }
+    });
     return res.data;
   }
 );

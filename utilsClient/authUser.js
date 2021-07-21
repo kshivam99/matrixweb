@@ -6,7 +6,6 @@ import cookie from "js-cookie";
 
 
 export const registerUser = async (user, tempProfilePicUrl, setError, setLoading) => {
-
   try {
     setLoading(true);
     const res = await axios.post(`${baseUrl}/api/auth/register`, {...user, profilePicUrl: tempProfilePicUrl});
