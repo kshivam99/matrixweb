@@ -97,7 +97,7 @@ function Post({ postId, user }) {
         {post.comments.length > 0 &&
               post.comments.map(
                 (comment, i) =>
-                  i < 3 && (
+                   (
                     <PostComments
                       key={comment._id}
                       comment={comment}
@@ -106,16 +106,6 @@ function Post({ postId, user }) {
                     />
                   )
               )}
-
-            {post.comments.length > 3 && (
-              <Button
-                content="View More"
-                color="teal"
-                basic
-                circular
-                onClick={() => setShowModal(true)}
-              />
-            )}
 
               <CommentInputField postId={post._id}/>
         </div>}
