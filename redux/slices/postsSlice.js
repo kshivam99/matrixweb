@@ -2,12 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import baseUrl from "../../utilsClient/baseUrl";
 import cookie from "js-cookie";
-
-const Axios = axios.create({
-  baseURL: `${baseUrl}/api/posts`,
-  headers: { Authorization: cookie.get("token") },
-});
-
+import { createInstance } from "./axiosInstance";
 
 export const fetchPosts = createAsyncThunk(
   "posts/fetchPosts",
@@ -26,6 +21,7 @@ export const fetchPosts = createAsyncThunk(
 export const submitNewPost = createAsyncThunk(
   "posts/submitNewPost",
   async (req) => {
+    const Axios = createInstance(cookie.get("token"),"/api/posts/");
     const res = await Axios.post("/", req);
     return res.data;
   }
@@ -34,6 +30,7 @@ export const submitNewPost = createAsyncThunk(
 export const deletePost = createAsyncThunk(
   "posts/deletePost",
   async (postId) => {
+    const Axios = createInstance(cookie.get("token"),"/api/posts/");
     const res = await Axios.delete(`/${postId}`);
     return postId;
   }
@@ -41,7 +38,7 @@ export const deletePost = createAsyncThunk(
 
 export const likePost = createAsyncThunk("posts/likePost", async (req) => {
   const { postId, userId, like } = req;
-  
+  const Axios = createInstance(cookie.get("token"),"/api/posts/");
   if (like) {
     await Axios.post(`/like/${postId}`);
   } else {
@@ -53,6 +50,7 @@ export const likePost = createAsyncThunk("posts/likePost", async (req) => {
 export const postComment = createAsyncThunk(
   "posts/postComment",
   async ({postId, text}) => {
+    const Axios = createInstance(cookie.get("token"),"/api/posts/");
     const res = await Axios.post(`/comment/${postId}`, { text });
     return {comment: res.data, postId};
   }
@@ -61,6 +59,7 @@ export const postComment = createAsyncThunk(
 export const deleteComment = createAsyncThunk(
   "posts/deleteComment",
   async ({postId, commentId}) => {
+    const Axios = createInstance(cookie.get("token"),"/api/posts/");
     const res = await Axios.delete(`/${postId}/${commentId}`);
     return {postId, commentId};
   }
